@@ -182,7 +182,7 @@
     </section>
 
     <!-- Let's Learn Vocabularies section -->
-    <section class="mt-20">
+    <section class="my-20">
       <h2 class="text-4xl font-bold text-center mb-5">
         <span class="text-[#00BCFF]">Let's</span> Learn Vocabularies
       </h2>
@@ -192,6 +192,26 @@
       ></div>
     </section>
 
+    <!-- Search section -->
+    <section class="flex justify-center my-10">
+      <div class="join">
+        <div>
+          <label class="input validator join-item outline-none">
+            <input
+              id="input-search"
+              type="text"
+              required
+              placeholder="Search Your vocabulary"
+            />
+          </label>
+        </div>
+        <button id="btn-search" class="btn btn-primary join-item">
+          Search
+        </button>
+      </div>
+    </section>
+
+    <!-- Word-container section -->
     <section
       id="word-container"
       class="bg-gray-200 p-10 container mx-auto mt-5 rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5"
@@ -206,6 +226,27 @@
         <p class="text-2xl text-gray-800">Please select a lesson.</p>
       </div>
     </section>
+
+    <!-- Spinner section -->
+    <section id="spinner" class="flex justify-center items-center p-10 hidden">
+      <span class="loading loading-spinner text-primary"></span>
+    </section>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+    <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
+      <div class="modal-box">
+        <div id="details-container" class=""></div>
+        <div class="modal-action">
+          <form method="dialog">
+            <!-- if there is a button in form, it will close the modal -->
+            <button class="btn btn-primary">Close</button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Scripts -->
     <script src="./scripts/level.js"></script>
   </body>
 </html>

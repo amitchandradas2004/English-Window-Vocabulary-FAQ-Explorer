@@ -3,6 +3,11 @@ const loadlessons = () => {
     .then((res) => res.json()) // promise of json data
     .then((json) => displayLesson(json.data));
 };
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
 const removeActive = () => {
   const lessonButtons = document.querySelectorAll(".lesson-btn");
   lessonButtons.forEach((btn) => btn.classList.remove("active"));
@@ -22,7 +27,79 @@ const loadLevelWord = (id) => {
     });
 };
 
+const loadWordDetail = async (id) => {
+  const url = `https://openapi.programming-hero.com/api/word/${id}`;
+
+  const res = await fetch(url);
+  const details = await res.json();
+  displayWordDetails(details.data);
+};
+
+// "data": {
+// "word": "Eager",
+// "meaning": "আগ্রহী",
+// "pronunciation": "ইগার",
+// "level": 1,
+// "sentence": "The kids were eager to open their gifts.",
+// "points": 1,
+// "partsOfSpeech": "adjective",
+// "synonyms": [
+// "enthusiastic",
+// "excited",
+// "keen"
+// ],
+// "id": 5
+// }
+
+// This is the spinner part
+const manageSpinner = (status) => {
+  if (status == true) {
+    document.getElementById("spinner").classList.remove("hidden");
+    document.getElementById("word-container").classList.add("hidden");
+  } else {
+    document.getElementById("word-container").classList.remove("hidden");
+    document.getElementById("spinner").classList.add("hidden");
+  }
+};
+
+// This part is for the synonyms:
+const createElements = (arr) => {
+  const htmlElements = arr.map((el) => `<span class="btn">${el}</span>`);
+  return htmlElements.join(" ");
+};
+
+const displayWordDetails = (word) => {
+  console.log(word);
+  const detailsBox = document.getElementById("details-container");
+  detailsBox.innerHTML = `
+  <div class="bangla border border-gray-100 p-4 rounded-lg space-y-3">
+          <h2 class="text-3xl font-bold">
+            ${word.word}(<i
+              class="fa-solid fa-microphone-lines"
+              style="color: rgb(42, 45, 46)"
+            ></i
+            >: ${word.pronunciation})
+          </h2>
+          <div>
+            <h3 class="font-bold">Meaning</h3>
+            <p class="opacity-80">${word.meaning}</p>
+          </div>
+          <div>
+            <h2 class="font-bold">Example</h2>
+            <p class="opacity-80">${word.sentence}</p>
+          </div>
+          <div>
+            <h3 class="font-bold">Synonyms are</h3>
+            <div>
+             ${createElements(word.synonyms)}
+            </div>
+          </div>
+        </div>
+  `;
+  document.getElementById("word_modal").showModal();
+};
 const displayLevelWords = (words) => {
+  manageSpinner(true);
   const wordContainer = document.getElementById("word-container");
   wordContainer.innerHTML = "";
 
@@ -38,6 +115,7 @@ const displayLevelWords = (words) => {
         <p class="text-2xl text-gray-800">Please go to the next lesson.</p>
       </div>
       `;
+    manageSpinner(false);
     return;
   }
   // {
@@ -58,13 +136,13 @@ const displayLevelWords = (words) => {
         <p class="font-semibold">meaning / pronunciation</p>
         <div class="bangla text-2xl font-semibold">"${word.meaning ? word.meaning : "Meaning Not Found"} / ${word.pronunciation ? word.pronunciation : "Pronunciation Not Found"}"</div>
         <div class="flex justify-between items-center">
-          <button class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80]">
+          <button onClick="loadWordDetail(${word.id})" class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80]">
             <i
               class="fa-solid fa-circle-info"
               style="color: rgb(42, 45, 46)"
             ></i>
           </button>
-          <button class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80]">
+          <button onClick="pronounceWord('${word.word}')" class="btn bg-[#1A91FF20] hover:bg-[#1A91FF80]">
             <i
               class="fa-solid fa-volume-high"
               style="color: rgb(42, 45, 46)"
@@ -74,6 +152,7 @@ const displayLevelWords = (words) => {
       </div>    `;
     wordContainer.append(card);
   });
+  manageSpinner(false);
 };
 const displayLesson = (lessons) => {
   // 1: Get the container and empty it
@@ -95,3 +174,19 @@ const displayLesson = (lessons) => {
   }
 };
 loadlessons();
+
+document.getElementById("btn-search").addEventListener("click", () => {
+  removeActive();
+  const inputSearch = document.getElementById("input-search");
+  const searchValue = inputSearch.value.trim().toLowerCase();
+
+  fetch("https://openapi.programming-hero.com/api/words/all")
+    .then((res) => res.json())
+    .then((data) => {
+      const allWords = data.data;
+      const filterWords = allWords.filter((word) =>
+        word.word.toLowerCase().includes(searchValue),
+      );
+      displayLevelWords(filterWords);
+    });
+});
