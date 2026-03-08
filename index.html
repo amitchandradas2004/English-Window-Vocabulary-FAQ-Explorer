@@ -40,16 +40,107 @@
     <link rel="stylesheet" href="style.css" />
     <style>
       .poppins {
-        font-family: "Poppins", sans-serif;
-        /* font-weight: 100; */
+        font-family: "Poppins";
+        font-weight: 500;
         font-style: normal;
       }
-      .hind {
-        font-family: "Hind Siliguri", sans-serif;
-        /* font-weight: 300; */
+      .bangla {
+        font-family: "Hind Siliguri";
         font-style: normal;
       }
     </style>
   </head>
-  <body></body>
+  <body class="poppins">
+    <header class="shadow-sm shadow-gray-300">
+      <nav
+        class="container mx-auto flex justify-between items-center py-3 px-3 md:px-0"
+      >
+        <div class="navbar-start inline-flex sm:hidden">
+          <div class="dropdown">
+            <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
+            </div>
+            <ul
+              tabindex="-1"
+              class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-40 shadow items-center"
+            >
+              <li>
+                <a href=""
+                  ><button class="btn btn-outline w-25">
+                    <i class="fa-solid fa-circle-question"></i>
+                    FAQ
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href=""
+                  ><button class="btn btn-outline w-25 mx-2">
+                    <i class="fa-solid fa-book-open"></i>
+                    Learn
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="">
+                  <button class="btn btn-outline w-25">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    Logout
+                  </button>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="gap-1 flex items-center">
+          <h2 class="font-bold">English</h2>
+          <i
+            class="fa-brands fa-windows fa-2xl"
+            style="color: hsl(206, 58%, 63%)"
+          ></i>
+          <h2 class="bangla">জানালা</h2>
+        </div>
+        <div class="gap-5 hidden sm:inline-flex">
+          <ul class="flex">
+            <li>
+              <a href=""
+                ><button class="btn btn-outline btn-primary">
+                  <i class="fa-solid fa-circle-question"></i>
+                  FAQ
+                </button></a
+              >
+            </li>
+            <li>
+              <a href=""
+                ><button class="btn btn-outline btn-primary mx-2">
+                  <i class="fa-solid fa-book-open"></i>
+                  Learn
+                </button></a
+              >
+            </li>
+            <li>
+              <a href="">
+                <button class="btn btn-outline btn-primary">
+                  <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                  Logout
+                </button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  </body>
 </html>
