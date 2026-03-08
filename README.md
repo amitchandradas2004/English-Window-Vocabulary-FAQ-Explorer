@@ -1,3 +1,74 @@
+# English Janala - Vocabulary Explorer
+
+English Janala is an interactive web application designed to help users learn English vocabulary in a simple and engaging way. The application allows users to browse words by lessons, search for specific vocabulary, hear word pronunciation, and view detailed meanings with examples.
+
+## Live Features
+
+- Browse vocabulary by lesson levels
+- Search words instantly
+- Hear pronunciation using Web Speech API
+- View detailed word information
+- Dynamic data loaded from API
+- Responsive UI design
+
+## [Live Link](https://amitchandradas2004.github.io/English-Window-Vocabulary-FAQ-Explorer/)
+
+## Technologies Used
+
+- HTML5
+- Tailwind CSS
+- DaisyUI
+- JavaScript (ES6)
+- Web Speech API
+- REST API
+
+## Features
+
+### Lesson Based Learning
+Users can select a lesson to view all related vocabulary words.
+
+### Word Search
+A search system allows users to find vocabulary instantly.
+
+### Word Details
+Clicking the info button opens a modal displaying:
+
+- Meaning
+- Example sentence
+- Pronunciation
+- Synonyms
+
+### Pronunciation
+Users can listen to word pronunciation using the browser's speech synthesis feature.
+
+## UI Highlights
+
+- Fully responsive design
+- Clean card layout
+- Loading spinner
+- Interactive buttons
+- Modal-based word details
+
+## Future Improvements
+
+- User authentication
+- Progress tracking
+- Favorite words feature
+- Dark mode
+- Backend integration
+
+## Author
+
+### Amit Chandra Das
+Aspiring Full-Stack Web Developer
+
+## License
+
+This project is open-source and available for learning and educational purposes.
+
+---
+---
+
 # ENGLISH <img width="25px" src="./assets/logo.png" /> JANALA
 
 ---
@@ -110,7 +181,3 @@ function pronounceWord(word) {
 ```
 
 For More >> you can explore this implementation 👉 [https://codepen.io/Ferdous-Zihad/pen/PwoJMmJ](https://codepen.io/Ferdous-Zihad/pen/PwoJMmJ)
-
----
-Bonus : How to create Private Repository for next assignments
-## Test Repo - :  https://classroom.github.com/a/Fgjib-lr
