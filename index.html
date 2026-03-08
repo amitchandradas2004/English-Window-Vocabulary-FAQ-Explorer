@@ -48,6 +48,10 @@
         font-family: "Hind Siliguri";
         font-style: normal;
       }
+      .active {
+        background-color: #422ad5;
+        color: white;
+      }
     </style>
   </head>
   <body class="poppins">
@@ -188,11 +192,20 @@
       ></div>
     </section>
 
-    
     <section
       id="word-container"
-      class="bg-gray-200 p-10 container mx-auto mt-5 rounded-lg grid grid-cols-1 sm:grid-cols-2  md:grid-cols-3 gap-5"
-    ></section>
+      class="bg-gray-200 p-10 container mx-auto mt-5 rounded-lg grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5"
+    >
+      <div
+        class="text-center bg-sky-50 col-span-full bangla rounded-xl py-10 space-y-5"
+      >
+        <img src="./assets/alert-error.png" alt="" class="mx-auto" />
+        <p class="text-2xl text-gray-700 font-semibold">
+          You have not selected any lesson yet.
+        </p>
+        <p class="text-2xl text-gray-800">Please select a lesson.</p>
+      </div>
+    </section>
     <script src="./scripts/level.js"></script>
   </body>
 </html>
